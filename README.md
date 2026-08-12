@@ -1,16 +1,51 @@
-# React + Vite
+Aplicação desenvolvida para o teste prático da Flávio Ribeiro Contabilidade.  
+Permite visualizar, pesquisar e gerenciar clientes de forma intuitiva e responsiva.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Funcionalidades Implementadas:
 
-Currently, two official plugins are available:
+Essenciais
+- **Listagem de clientes** - Consome a API pública JSONPlaceholder e exibe os dados em cards
+- **Pesquisa em tempo real** - Filtra clientes por nome, email ou empresa
+- **Design responsivo** - Adapta-se a diferentes tamanhos de tela (mobile-first)
+- **Tratamento de loading** - Skeleton screens animados enquanto os dados carregam
+- **Tratamento de erros** - Mensagens amigáveis com opção de tentar novamente
+- **Navegação entre páginas** - Detalhes do cliente em página separada (React Router)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Diferenciais Implementados
+- **Debounce na pesquisa** - Delay de 500ms para evitar múltiplas requisições
+- **Ordenação alfabética** - Ordena clientes por nome (A-Z / Z-A)
+- **Paginação** - Exibe 6 clientes por página com navegação intuitiva
+- **Tema claro/escuro** - Alternância entre temas com persistência no localStorage
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tecnologias e Bibliotecas:
+| Tecnologia | Versão | Finalidade |
+|------------|--------|------------|
+| **React** | 18.2.0 | Biblioteca principal para construção da interface |
+| **Vite** | 5.0.0 | Build tool e servidor de desenvolvimento |
+| **Tailwind CSS** | 3.4.0 | Estilização com classes utilitárias |
+| **React Router DOM** | 6.20.0 | Navegação entre páginas |
+| **Axios** | 1.6.0 | Requisições HTTP para a API |
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Estrutura do Projeto:
+src/
+├── components/ # Componentes reutilizáveis
+│ ├── ClientCard.jsx # Card individual do cliente
+│ ├── ClientList.jsx # Lista de clientes com skeleton
+│ ├── Pagination.jsx # Controles de paginação
+│ ├── SearchBar.jsx # Barra de pesquisa com debounce
+│ ├── SkeletonCard.jsx # Skeleton para loading
+│ ├── SortButton.jsx # Botão de ordenação
+│ └── ThemeToggle.jsx # Alternador de tema
+├── contexts/ # Contextos React
+│ └── ThemeContext.jsx # Gerenciamento do tema
+├── hooks/ # Custom Hooks
+│ └── useDebounce.js # Debounce para pesquisa
+├── pages/ # Páginas da aplicação
+│ └── ClientDetails.jsx # Detalhes do cliente
+├── services/ # Integração com APIs
+│ └── api.js # Configuração do Axios e endpoints
+├── App.jsx # Componente principal
+├── App.css # Estilos globais
+└── main.jsx # Ponto de entrada
